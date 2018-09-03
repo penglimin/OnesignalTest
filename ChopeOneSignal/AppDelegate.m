@@ -32,10 +32,19 @@
     
     id notificationOpenedBlock = ^(OSNotificationOpenedResult *result) {
         
+        
         // result.action.actionID 获取点击按钮的 actionID
-        //        if (result.action.actionID) {
-        //            NSLog(@"Action ID: ", result.action.actionID);
-        //        }
+        if (result.action.actionID) {
+            
+            if ([result.action.actionID isEqualToString:@"comment"]) {
+                // 点击了评论
+            }
+            
+            if ([result.action.actionID isEqualToString:@"join"]) {
+                // 点击了加入
+            }
+            
+        }
         // This block gets called when the user reacts to a notification received
         OSNotificationPayload* payload = result.notification.payload;
         
