@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <OneSignal/OneSignal.h>
+#import "RedViewController.h"
+#import "GreenViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,46 +28,13 @@
 - (void)setUpOneSignalSetting:(NSDictionary *)launchOptions
 {
 
-    id notificationReceiverBlock = ^(OSNotification *notification) {
+    // (Optional) - Create block the will fire when a notification is recieved while the app is in focus.
+    id notificationRecievedBlock = ^(OSNotification *notification) {
         NSLog(@"Received Notification - %@", notification.payload.notificationID);
-        
-        // 接受silent-notifications
-        // 静默消息注意三点： 发送背景通知
-//        1. Notification Service Extension. See Step 1 of our iOS Native SDK setup guide to add one to your Xcode project. This will only fire for iOS 10+.
-//        2. Add a notification message or API contents parameter.
-        // 不能添加content title 以及 subtitle等。不然通知就是可见的
-//        3. Enabling Mutable Content in the Dashboard > New Message > Options section or the API mutable_content parameter
-        
-        // 发送无声通知
-//        静音通知专为原生iOS和Android应用而设计。您可以使用本机代码在非本机应用程序上实现它们。
-//
-//        iOS - 只需启用content_available = true
-//        这将允许您省略消息正文以防止显示通知，以便您可以发送所需的任何数据。
-
-//        iOS静音通知仅在应用程序处于打开状态且在后台或前台时才有效。
-//        如果应用程序已强制退出或“刷掉”，您可以通过向通知添加内容来“唤醒”。
-
-
-        
-
     };
     
+    // (Optional) - Create block that will fire when a notification is tapped on.
     id notificationOpenedBlock = ^(OSNotificationOpenedResult *result) {
-        
-        
-        // result.action.actionID 获取点击按钮的 actionID
-        if (result.action.actionID) {
-            
-            if ([result.action.actionID isEqualToString:@"comment"]) {
-                // 点击了评论
-            }
-            
-            if ([result.action.actionID isEqualToString:@"join"]) {
-                // 点击了加入
-            }
-            
-        }
-        // This block gets called when the user reacts to a notification received
         OSNotificationPayload* payload = result.notification.payload;
         
         NSString* messageTitle = @"OneSignal Example";
@@ -73,31 +42,62 @@
         
         if (payload.additionalData) {
             
-            if(payload.title)
+            if (payload.title)
                 messageTitle = payload.title;
             
-            NSDictionary* additionalData = payload.additionalData;
+            if (result.action.actionID) {
+                fullMessage = [fullMessage stringByAppendingString:[NSString stringWithFormat:@"\nPressed ButtonId:%@", result.action.actionID]];
+                
+                UIViewController *vc;
+                
+                if ([result.action.actionID isEqualToString: @"id2"]) {
+                    RedViewController *redVC = [[RedViewController alloc] init];
+                    
+                    if (payload.additionalData[@"OpenURL"])
+                        redVC.receivedUrl = [NSURL URLWithString:(NSString *)payload.additionalData[@"OpenURL"]];
+                    
+                    vc = redVC;
+                } else if ([result.action.actionID isEqualToString:@"id1"]) {
+//                    vc = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"greenVC"];
+                    
+                    GreenViewController *greenVC = [[GreenViewController alloc] init];
+                    
+                    if (payload.additionalData[@"OpenURL"])
+                        greenVC.receivedUrl = [NSURL URLWithString:(NSString *)payload.additionalData[@"OpenURL"]];
+                    
+                    vc = greenVC;
+                }
+                
+                [self.window.rootViewController presentViewController:vc animated:true completion:nil];
+            }
             
-            if (additionalData[@"actionSelected"])
-                fullMessage = [fullMessage stringByAppendingString:[NSString stringWithFormat:@"\nPressed ButtonId:%@", additionalData[@"actionSelected"]]];
+            
         }
         
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
-                                                            message:fullMessage
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Close"
-                                                  otherButtonTitles:nil, nil];
-        [alertView show];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Push Notification" message:fullMessage preferredStyle:UIAlertControllerStyleAlert];
+        [controller addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil]];
+        
+        [self.window.rootViewController presentViewController:controller animated:true completion:nil];
         
     };
     
-    id onesignalInitSettings = @{kOSSettingsKeyAutoPrompt : @YES};
+    // (Optional) - Configuration options for OneSignal settings.
+    id oneSignalSetting = @{kOSSettingsKeyInFocusDisplayOption : @(OSNotificationDisplayTypeNotification), kOSSettingsKeyAutoPrompt : @YES};
+    
+    
+    
+    // (REQUIRED) - Initializes OneSignal
+//    [OneSignal initWithLaunchOptions:launchOptions
+//                               appId:@"f79818a7-cdd0-42b2-bf83-affeeb67bba6"
+//          handleNotificationReceived:notificationRecievedBlock
+//            handleNotificationAction:notificationOpenedBlock
+//                            settings:oneSignalSetting];
     
     [OneSignal initWithLaunchOptions:launchOptions
                                appId:@"ed7f9896-ec0b-43eb-a850-c1b05b3fd9eb"
-          handleNotificationReceived:notificationReceiverBlock
+          handleNotificationReceived:notificationRecievedBlock
             handleNotificationAction:notificationOpenedBlock
-                            settings:onesignalInitSettings];
+                            settings:oneSignalSetting];
     
     
     [OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {

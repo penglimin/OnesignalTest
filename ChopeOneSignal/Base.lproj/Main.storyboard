@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,13 +13,167 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9c8-vf-1fW">
+                                <rect key="frame" x="20" y="40" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kLY-v6-0na"/>
+                                </constraints>
+                                <state key="normal" title="SendTags"/>
+                                <connections>
+                                    <action selector="sendTagsBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sWv-ei-pwd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1l-Pp-2y0">
+                                <rect key="frame" x="20" y="90" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="C1N-ms-5U3"/>
+                                </constraints>
+                                <state key="normal" title="Get Tags"/>
+                                <connections>
+                                    <action selector="getTagsBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="52h-Em-olf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oc0-dF-H9g">
+                                <rect key="frame" x="20" y="140" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="K8e-99-ktf"/>
+                                </constraints>
+                                <state key="normal" title="Delete or Update Tags"/>
+                                <connections>
+                                    <action selector="deleteOrUpdateBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a21-Gm-rX7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVP-QF-hOl">
+                                <rect key="frame" x="20" y="190" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ILO-cz-CBd"/>
+                                </constraints>
+                                <state key="normal" title="send notification1"/>
+                                <connections>
+                                    <action selector="sendNotification1BtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kpL-Db-JRr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJM-oG-oNn">
+                                <rect key="frame" x="20" y="240" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="doC-B4-LGe"/>
+                                </constraints>
+                                <state key="normal" title="send notification2"/>
+                                <connections>
+                                    <action selector="sendNotification2BtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CV9-EB-a6k"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCr-hr-5vg">
+                                <rect key="frame" x="10" y="557" width="355" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="32N-z2-pPK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAG-ZT-zyf">
+                                <rect key="frame" x="20" y="290" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Fv7-9z-kFR"/>
+                                </constraints>
+                                <state key="normal" title="send notification3"/>
+                                <connections>
+                                    <action selector="notification3BtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aSK-RW-790"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aB7-bi-05p">
+                                <rect key="frame" x="20" y="340" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6Yg-yw-xD0"/>
+                                </constraints>
+                                <state key="normal" title="send notification4"/>
+                                <connections>
+                                    <action selector="notification4BtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DD5-9V-3HW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3H-ic-1mT">
+                                <rect key="frame" x="20" y="390" width="335" height="20"/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.72941176470000002" blue="0.92156862750000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="98J-nH-d4E"/>
+                                </constraints>
+                                <state key="normal" title="Register For Push Notification"/>
+                                <connections>
+                                    <action selector="registerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jbr-si-8RK"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Utl-D4-jYx">
+                                <rect key="frame" x="10" y="428" width="51" height="31"/>
+                                <connections>
+                                    <action selector="subscriptionSwitchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="nNe-2j-etj"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="setSubcription ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-mx-Tnv">
+                                <rect key="frame" x="79" y="433" width="296" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9xg-B5-dGQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9c8-vf-1fW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0Tt-5S-egE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nZU-mx-Tnv" secondAttribute="trailing" id="4Bh-Oq-B0e"/>
+                            <constraint firstItem="aB7-bi-05p" firstAttribute="top" secondItem="iAG-ZT-zyf" secondAttribute="bottom" constant="10" id="54t-x2-NIb"/>
+                            <constraint firstItem="aB7-bi-05p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="671-lt-K7O"/>
+                            <constraint firstItem="RVP-QF-hOl" firstAttribute="top" secondItem="oc0-dF-H9g" secondAttribute="bottom" constant="10" id="7F1-5w-9gi"/>
+                            <constraint firstItem="RVP-QF-hOl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7x0-Tw-IVg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kCr-hr-5vg" secondAttribute="bottom" constant="10" id="7zf-nf-hvl"/>
+                            <constraint firstItem="nZU-mx-Tnv" firstAttribute="top" secondItem="I3H-ic-1mT" secondAttribute="bottom" constant="23" id="8dm-zH-Jrq"/>
+                            <constraint firstItem="bJM-oG-oNn" firstAttribute="top" secondItem="RVP-QF-hOl" secondAttribute="bottom" constant="10" id="8uJ-nO-gSE"/>
+                            <constraint firstItem="oc0-dF-H9g" firstAttribute="top" secondItem="N1l-Pp-2y0" secondAttribute="bottom" constant="10" id="Ahk-8d-KeG"/>
+                            <constraint firstItem="N1l-Pp-2y0" firstAttribute="top" secondItem="9c8-vf-1fW" secondAttribute="bottom" constant="10" id="Eot-mp-7Sd"/>
+                            <constraint firstItem="nZU-mx-Tnv" firstAttribute="leading" secondItem="Utl-D4-jYx" secondAttribute="trailing" constant="20" id="Evl-SR-xcx"/>
+                            <constraint firstItem="9c8-vf-1fW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="I1Q-pD-dRs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oc0-dF-H9g" secondAttribute="trailing" constant="20" id="JQT-d7-ajN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9c8-vf-1fW" secondAttribute="trailing" constant="20" id="MV7-hj-FgB"/>
+                            <constraint firstItem="bJM-oG-oNn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PYd-FY-qBd"/>
+                            <constraint firstItem="kCr-hr-5vg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="QVG-Z7-g89"/>
+                            <constraint firstItem="iAG-ZT-zyf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RMR-8X-geg"/>
+                            <constraint firstItem="oc0-dF-H9g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WSI-wi-scX"/>
+                            <constraint firstItem="I3H-ic-1mT" firstAttribute="top" secondItem="aB7-bi-05p" secondAttribute="bottom" constant="10" id="WTf-DF-f62"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N1l-Pp-2y0" secondAttribute="trailing" constant="20" id="Ysk-HP-wWY"/>
+                            <constraint firstItem="N1l-Pp-2y0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZJ9-9h-fzc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iAG-ZT-zyf" secondAttribute="trailing" constant="20" id="c4C-xp-Ggh"/>
+                            <constraint firstItem="I3H-ic-1mT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iGr-yB-tqU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bJM-oG-oNn" secondAttribute="trailing" constant="20" id="kWS-x1-t00"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I3H-ic-1mT" secondAttribute="trailing" constant="20" id="kjY-4S-2jF"/>
+                            <constraint firstItem="Utl-D4-jYx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="ks0-IU-ShB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RVP-QF-hOl" secondAttribute="trailing" constant="20" id="kta-cR-IKp"/>
+                            <constraint firstItem="iAG-ZT-zyf" firstAttribute="top" secondItem="bJM-oG-oNn" secondAttribute="bottom" constant="10" id="odb-UL-Hie"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kCr-hr-5vg" secondAttribute="trailing" constant="10" id="seL-Is-cTx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aB7-bi-05p" secondAttribute="trailing" constant="20" id="weO-1G-xnv"/>
+                            <constraint firstItem="Utl-D4-jYx" firstAttribute="top" secondItem="I3H-ic-1mT" secondAttribute="bottom" constant="18" id="yAL-Df-w7m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="registerNotificationBtn" destination="I3H-ic-1mT" id="jY8-sV-3do"/>
+                        <outlet property="subscriptionStatusLabel" destination="nZU-mx-Tnv" id="ACe-CV-oEP"/>
+                        <outlet property="subscriptionStatusSwitch" destination="Utl-D4-jYx" id="OQ2-t9-dGH"/>
+                        <outlet property="textView" destination="kCr-hr-5vg" id="0fr-ct-ChB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
